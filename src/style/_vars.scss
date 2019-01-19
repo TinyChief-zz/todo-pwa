@@ -1,0 +1,48 @@
+// FONTS
+
+
+$mainColor: #fafafa;
+// SCREENS
+$desktopWidth: 1170px;
+$smDesktopWidth: 960px;
+$tabletWidth: 768px;
+// $phoneWidth: 480px;
+$phoneWidth: 480px;
+$smPhoneWidth: 320px;
+// $smPhoneWidth: 320px;
+// MIXINS
+@mixin for-small-phone {
+  @media screen and (max-width: $smPhoneWidth) {
+    @content;
+  }
+}
+
+@mixin for-phone {
+  @media screen and (max-width: $phoneWidth) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media screen and (max-width: $tabletWidth) {
+    @content;
+  }
+}
+
+@mixin for-small-desktop {
+  @media screen and (max-width: $smDesktopWidth) {
+    @content;
+  }
+}
+
+@mixin for-desktop {
+  @media screen and (max-width: $desktopWidth) {
+    @content;
+  }
+}
+
+@mixin for-big-desktop-up {
+  @media (max-width: 1800px) {
+    @content;
+  }
+}

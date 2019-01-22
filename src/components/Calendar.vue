@@ -22,14 +22,16 @@
 </template>
 
 <script>
-import Toolbar from '@/components/reusable/Toolbar.vue'
-import AddTask from '@/components/reusable/AddTask.vue'
+import Toolbar from '@/components/reusable/Toolbar'
+import AddTask from '@/components/reusable/AddTask'
+import Icon from '@/components/reusable/Icon'
 
 export default {
   name: 'Home',
   components: {
     Toolbar,
-    AddTask
+    AddTask,
+    Icon
   },
   data () {
     return {
@@ -64,10 +66,13 @@ export default {
       // Do something...
     },
     monthChanged: function (start, end) {
+      // console.log(this.tasksFiltered)
       handleHighlights(this.tasksFiltered, 'remove')
+      // console.log(end)
       const month = end.getMonth()
       const year = end.getFullYear()
       this.tasksFiltered = filterTasksByMonthAndYear(this.tasks, year, month)
+      console.log(this.tasksFiltered)
       this.$nextTick(() => {
         handleHighlights(this.tasksFiltered, 'add')
       })
@@ -78,12 +83,12 @@ export default {
     oldNext.innerHTML = '<i class="fal fa-angle-right"> </i>'
     const oldPrev = document.querySelector('.prev-month')
     oldPrev.innerHTML = '<i class="fal fa-angle-left"> </i>'
-    this.$nextTick(() => {
-      this.dayClicked(this.$store.getters.getTodayDate)
-    })
+    const now = new Date()
+    this.tasksFiltered = filterTasksByMonthAndYear(this.tasks, now.getFullYear(), now.getMonth())
+    this.dayClicked(now)
   },
   beforeMount: function () {
-    this.tasks = this.$store.getters.userTasks
+    this.tasks = this.$store.getters.todayTasks
   }
 }
 
@@ -104,15 +109,17 @@ function handleHighlights (tasks, action) {
   const days = document.querySelectorAll('.week-day')
   tasks.forEach(el => {
     const taskDay = el.date.getDate()
-    const indexOfDay = Array.from(days).findIndex((el, i) => {
+    const indexOfDay = [...days].findIndex((el, i) => {
       if (
-        !Array.from(days[i].classList).includes('not-current') &&
-        el.innerText.trim() === taskDay
+        ![...days[i].classList].includes('not-current') &&
+        +el.innerText.trim() === taskDay
       ) {
         return true
       }
     })
-    days[indexOfDay].classList[action]('highlighted')
+    if (days[indexOfDay]) {
+      days[indexOfDay].classList[action]('highlighted')
+    }
   })
 }
 </script>

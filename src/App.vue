@@ -17,10 +17,9 @@ import Menu from './components/reusable/Menu'
 export default {
   components: { New, Menu },
   name: 'App',
-  beforeMount () {
+  beforeMount: async function () {
     if (window.localStorage.getItem('name')) {
-      console.log('here')
-      this.$store.dispatch('setUserFromStorage', { user: {
+      await this.$store.dispatch('setUserFromStorage', { user: {
         email: window.localStorage.getItem('email'),
         password: window.localStorage.getItem('password'),
         name: window.localStorage.getItem('name'),
@@ -29,7 +28,13 @@ export default {
         phone: window.localStorage.getItem('phone')
       },
       jwt: window.localStorage.getItem('jwt') })
+    } else {
+      this.$router.push({ name: 'Login' })
     }
+    // Comment these two lines
+    await this.$store.dispatch('getUserTasks')
+    this.$store.dispatch('getTodayTasks')
+    // // this.time = this.getTime()
   }
 }
 </script>

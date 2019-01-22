@@ -24,7 +24,7 @@
         </div>
       </div>
       <large-button text="Sign In" @btn-clicked="login"></large-button>
-      <already-have firstText="DON’T HAVE AN ACCOUNT?" secondText="SIGN UP" to="Register"></already-have>
+      <already-have firstText="DON’T HAVE AN ACCOUNT? " secondText="SIGN UP" to="Register"></already-have>
     </div>
   </div>
 </template>
@@ -32,12 +32,13 @@
 <script>
 import LargeButton from '@/components/reusable/LargeButton.vue'
 import AlreadyHave from '@/components/reusable/AlreadyHave.vue'
-// import Toolbar from '@/components/reusable/Toolbar.vue'
+import Icon from '@/components/reusable/Icon.vue'
 
 export default {
   components: {
     LargeButton,
-    AlreadyHave
+    AlreadyHave,
+    Icon
   },
   data () {
     return {

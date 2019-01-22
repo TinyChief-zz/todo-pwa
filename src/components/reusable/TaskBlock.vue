@@ -12,12 +12,14 @@
 </template>
 
 <script>
+import Icon from '@/components/reusable/Icon'
+
 export default {
+  components: { Icon },
   name: 'TaskBlock',
   props: ['task'],
   data () {
-    return {
-    }
+    return {}
   },
   methods: {
     getHours: function (date) {

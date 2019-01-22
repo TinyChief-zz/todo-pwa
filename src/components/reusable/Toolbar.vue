@@ -14,7 +14,6 @@
       @click="$emit('right-icon-clicked')"
     >
       <i :class="[rightIcon, 'right-icon']"></i>
-      <h1>Hello world</h1>
     </div>
   </div>
 </template>
@@ -56,7 +55,8 @@ i {
   font-size: 28px;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
+  padding: 8px;
 }
 .right-icon {
   right: 0;

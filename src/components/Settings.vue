@@ -15,7 +15,7 @@
         <div class="photo" v-bind:style="{
                 backgroundImage : 'url(' + require('../assets/images/photo.png') + ')',
               }"></div>
-        <div class="logout" @click="$store.dispatch('logoutUser')">
+        <div class="logout" @click="handleLogout">
           <i class="fal fa-sign-out"></i>
         </div>
       </div>
@@ -61,11 +61,12 @@
 </template>
 
 <script>
-import Toolbar from '@/components/reusable/Toolbar.vue'
+import Toolbar from '@/components/reusable/Toolbar'
+import Icon from '@/components/reusable/Icon'
 
 export default {
   name: 'Settings',
-  components: { Toolbar },
+  components: { Toolbar, Icon },
   data () {
     return {
       userData: null
@@ -74,6 +75,9 @@ export default {
   methods: {
     leftAction: function () {
       this.$store.dispatch('toggleMenu')
+    },
+    handleLogout: function () {
+      this.$store.dispatch('logoutUser')
     }
   },
   beforeMount: function () {

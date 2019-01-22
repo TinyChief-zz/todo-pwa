@@ -14,7 +14,7 @@
           <div class="block-item__content">
             <p class="block-item__title">
               {{ hero.title }}
-              <span>{{hero.time}}</span>
+              <span v-if="hero.time">{{hero.time}}</span>
             </p>
             <p class="block-item__type">{{hero.type}}</p>
           </div>
@@ -26,11 +26,13 @@
 
 <script>
 import Toolbar from '@/components/reusable/Toolbar.vue'
+import Icon from '@/components/reusable/Icon'
 
 export default {
   name: 'Timeline',
   components: {
-    Toolbar
+    Toolbar,
+    Icon
   },
   data () {
     return {
@@ -107,5 +109,14 @@ export default {
     font-size: 14px;
     letter-spacing: 1px;
   }
+}
+.block-item__title span {
+  margin-top: 10px;
+}
+.block-item__type {
+  margin-top: 10px;
+}
+.block-item__title {
+  margin: 0;
 }
 </style>

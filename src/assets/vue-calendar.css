@@ -41,10 +41,11 @@
   right: 6px;
   top: -9px;
   font-size: 40px;
+  padding: 0 15px;
 }
 
 .prev-month {
-  transform: translateX(-300%)
+  right: 50px;
 }
 
 .calendar-body {

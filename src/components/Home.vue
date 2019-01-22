@@ -76,10 +76,6 @@ export default {
     if (!this.$store.getters.getTodayDate) {
       this.$store.dispatch('setDate')
     }
-    // Comment these two lines
-    // if (window.localStorage.getItem('name')) {
-    await this.$store.dispatch('getUserTasks')
-    this.$store.dispatch('getTodayTasks')
     this.time = this.getTime()
   },
   mounted: function () {

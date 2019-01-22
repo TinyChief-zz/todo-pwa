@@ -65,13 +65,18 @@ function setUserFromStorage ({ commit }, payload) {
 
 function logoutUser ({ commit }, payload) {
   toast.logoutUser(false)
-  document
-    .querySelector('.logout')
-    .addEventListener('click', function () {
-      commit('toggleMenu')
-      commit('logoutUser', payload)
-      router.push({ name: 'Login' })
-    })
+  setTimeout(() => {
+    document
+      .querySelector('.logout')
+      .addEventListener('click', function () {
+        commit('toggleMenu')
+        commit('logoutUser', payload)
+        for (let key in window.localStorage) {
+          localStorage.removeItem(key)
+        }
+        router.push({ name: 'Login' })
+      })
+  }, 100)
 }
 
 export { signUserIn, signUserUp, logoutUser, setUserFromStorage }

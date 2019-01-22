@@ -41,7 +41,7 @@
         </div>
       </div>
       <large-button text="Sign Up" @btn-clicked="register"></large-button>
-      <already-have firstText="ALREADY HAVE AN ACCOUNT?" secondText="SIGN IN" to="Login"></already-have>
+      <already-have firstText="ALREADY HAVE AN ACCOUNT? " secondText="SIGN IN" to="Login"></already-have>
     </div>
   </div>
 </template>
@@ -59,15 +59,6 @@ export default {
   },
   data () {
     return {
-      // email: null,
-      // password: null,
-      // error: null,
-      // name: null,
-      // phone: null,
-      email: 'ruslan@gmail.com',
-      password: '131313',
-      name: 'Руслан Юлдашбаев',
-      phone: '89051495235'
     }
   },
   methods: {

@@ -3,18 +3,23 @@
   "short_name": "TODO",
   "icons": [
     {
-      "src": "./img/icons/android-chrome-192x192.png",
-      "sizes": "192x192",
+      "src": "./img/icons/favicon.png",
+      "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/android-chrome-512x512.png",
+      "src": "./img/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "background_color": "#ffffff",
+  "theme_color": "#b8b8b8"
 }

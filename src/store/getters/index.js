@@ -34,6 +34,9 @@ export default {
       })
     }
   },
+  getTimeline (state) {
+    return state.timeline
+  },
   openNewTask (state) {
     return state.openNewTask
   },

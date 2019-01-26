@@ -9,7 +9,7 @@
     <div class="blocks blocks-tasks">
       <div v-for="(day, i) in daysWithTasks" :key="i" class="days-block">
         <p class="day-title">{{ day }}</p>
-        <div v-for="(hero, index) in getTaskForDay(day)" v-bind:key="index" class="block-item">
+        <div v-for="(hero, index) in tasks[day]" v-bind:key="index" class="block-item">
           <Icon :iconClass="hero.icon"></Icon>
           <div class="block-item__content">
             <p class="block-item__title">
@@ -43,56 +43,43 @@ export default {
   methods: {
     leftAction: function () {
       this.$store.dispatch('toggleMenu')
-    },
-    getDays: function () {
-      let days = []
-      // let allDays = []
-      const options = {
-        weekday: 'long',
-        month: 'long',
-        day: '2-digit'
-      }
-      this.tasks.map(el => {
-        days.push(new Date(el.date))
-      })
-      // SORT DAYS IN INCREASING WAY
-      days.sort((a, b) => {
-        return a - b
-      })
-      // TRANSFORM DATE OBJECTS TO HUMAN READBLE STRING
-      days = days.map(el => {
-        return new Date(el).toLocaleDateString('ru-Ru', options)
-      })
-      // REMAIN ONLY UNIQUE VALUES
-      days = [...new Set(days)]
-
-      return (this.daysWithTasks = days)
-    },
-    getTaskForDay: function (day) {
-      const tasksForDay = []
-      const options = {
-        weekday: 'long',
-        month: 'long',
-        day: '2-digit'
-      }
-      this.tasks.map(el => {
-        const taskDay = new Date(el.date).toLocaleDateString('ru-RU', options)
-        if (day === taskDay) {
-          tasksForDay.push(el)
-        }
-      })
-      return tasksForDay
     }
   },
   computed: {},
-  mounted: function () {
-    this.tasks = this.$store.getters.userTasks
-    this.tasks.sort(function (a, b) {
-      // Turn your strings into dates, and then subtract them
-      // to get a value that is either negative, positive, or zero.
-      return new Date(a.date) - new Date(b.date)
-    })
-    this.getDays()
+  beforeMount: function () {
+    const daysWithTasks = new Set()
+    const options = {
+      weekday: 'long',
+      month: 'long',
+      day: '2-digit',
+      year: 'numeric'
+    }
+    const tasks = {}
+    let timeline = {}
+    if (!this.$store.getters.timeline) {
+      this.$store.getters.userTasks.forEach(el => {
+        const cdate = new Date(el.date).toLocaleDateString('ru-Ru', options)
+        daysWithTasks.add(cdate)
+        if (!tasks[cdate]) {
+          tasks[cdate] = []
+          tasks[cdate].push(el)
+        } else {
+          tasks[cdate].push(el)
+        }
+      })
+      this.$store.dispatch('setTimeline', { tasks, daysWithTasks })
+      console.log('here')
+      timeline = this.$store.getters.getTimeline
+      this.tasks = timeline.tasks
+      this.daysWithTasks = timeline.daysWithTasks
+    } else {
+      timeline = this.$store.getters.getTimeline
+      this.tasks = timeline.tasks
+      this.daysWithTasks = timeline.daysWithTasks
+    }
+    console.log(timeline)
+    // console.log(days)
+    // console.log(sortedTasks)
   }
 }
 </script>

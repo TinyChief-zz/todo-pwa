@@ -54,6 +54,12 @@ async function createTask ({ commit }, payload) {
     console.error(err)
   }
 }
+function setTimeline ({ commit }, payload) {
+  commit('setTimeline', {
+    daysWithTasks: [...payload.daysWithTasks],
+    tasks: payload.tasks
+  })
+}
 
 function getTodayTasks ({ commit }) {
   const todayDay = new Date().getDate()
@@ -82,7 +88,7 @@ function openNewTask ({ commit }) {
   commit('openNewTask')
 }
 
-export { getUserTasks, createTask, getTodayTasks, openNewTask }
+export { getUserTasks, createTask, getTodayTasks, openNewTask, setTimeline }
 
 const iconNames = {
   'работа': 'fal fa-briefcase',

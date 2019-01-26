@@ -18,6 +18,9 @@ export default {
     state.user = null
     state.userTasks = null
   },
+  setTimeline (state, payload) {
+    state.timeline = payload
+  },
   setUserTasks (state, payload) {
     // if (!state.userTasks) {
     //   state.userTasks = payload

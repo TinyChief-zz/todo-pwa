@@ -261,12 +261,13 @@ export default {
     }
   },
   mounted: function () {
+    const oldNext = document.querySelector('.next-month')
+    oldNext.innerHTML = '<i class="fal fa-angle-right"> </i>'
+    const oldPrev = document.querySelector('.prev-month')
+    oldPrev.innerHTML = '<i class="fal fa-angle-left"> </i>'
     this.$nextTick(() => {
       const calendar = document.querySelector('.vue-calendar')
       calendar.style.marginTop = '10px'
-      const title = document.querySelector('.header-center')
-      title.style.marginBottom = '15px'
-      title.style.fontSize = '20px'
       const days = document.querySelectorAll('.week-day')
       for (let i = 0; i < days.length; i++) {
         days[i].style.height = '30px'
@@ -294,6 +295,12 @@ export default {
     &.choosed {
       background-color: rgba(255, 255, 255, 0.2);
     }
+  }
+}
+
+.calendar-header {
+  .title {
+    font-size: 15px;
   }
 }
 
@@ -433,6 +440,8 @@ export default {
 }
 
 .block-item {
+  height: initial;
+  padding: 15px 0 15px 50px;
   img:first-child {
     opacity: 0.5;
     transition: 0.2s all ease-in;

@@ -60,16 +60,16 @@ export default {
           icon: 'fal fa-chart-pie',
           number: '5'
         },
-        {
-          name: `Groups`,
-          notYet: true,
-          icon: 'fal fa-align-left'
-        },
-        {
-          name: 'Lists',
-          notYet: true,
-          icon: 'fal fa-list-ul'
-        },
+        // {
+        //   name: `Groups`,
+        //   notYet: true,
+        //   icon: 'fal fa-align-left'
+        // },
+        // {
+        //   name: 'Lists',
+        //   notYet: true,
+        //   icon: 'fal fa-list-ul'
+        // },
         {
           name: 'Profile',
           icon: 'fal fa-user-circle'

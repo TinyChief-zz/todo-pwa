@@ -88,7 +88,7 @@ export default {
     this.dayClicked(now)
   },
   beforeMount: function () {
-    this.tasks = this.$store.getters.todayTasks
+    this.tasks = this.$store.getters.userTasks
   }
 }
 

@@ -10,6 +10,7 @@
   margin-top: -36px;
   transition: 0.3s max-height ease-in;
   overflow: hidden;
+  grid-gap: 10px;
 }
 
 .calendar-header {

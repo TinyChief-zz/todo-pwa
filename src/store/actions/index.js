@@ -1,5 +1,5 @@
 import { signUserIn, signUserUp, logoutUser, setUserFromStorage } from '@/store/actions/auth'
-import { createTask, getUserTasks, getTodayTasks, openNewTask } from '@/store/actions/task'
+import { createTask, getUserTasks, getTodayTasks, openNewTask, setTimeline } from '@/store/actions/task'
 
 export default {
   toggleMenu ({ commit }) {
@@ -15,5 +15,6 @@ export default {
   signUserIn,
   signUserUp,
   logoutUser,
-  setUserFromStorage
+  setUserFromStorage,
+  setTimeline
 }

@@ -1,6 +1,7 @@
 export default {
   toggleMenu: false,
   userTasks: [],
+  timeline: {},
   // user: null,
   user: {
     _id: '5baf57a572c68615e1ba5ae4',

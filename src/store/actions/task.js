@@ -46,10 +46,8 @@ async function createTask ({ commit }, payload) {
     ) {
       commit('addTodayTask', response.data)
     }
-    commit('openNewTask')
     toast.taskSuccess()
   } catch (err) {
-    commit('openNewTask')
     toast.taskError()
     console.error(err)
   }

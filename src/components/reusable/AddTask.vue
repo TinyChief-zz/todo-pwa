@@ -1,5 +1,8 @@
 <template>
-  <button class="btn--add" @click="addTask">
+  <button
+    class="btn--add"
+    @click="addTask"
+  >
     <img src="../../assets/images/plus.png" alt="plus" width="35px">
   </button>
 </template>
@@ -11,7 +14,7 @@ export default {
   },
   methods: {
     addTask: function () {
-      this.$store.dispatch('openNewTask')
+      this.$router.push({ name: 'New' })
     }
   }
 }

@@ -80,7 +80,6 @@
             </div>
           </div>
         </div>
-        {{ typeSelected }}
         <div class="block-item block-types">
           <img class="block-item__icon" src="../assets/images/notification-w.png" alt="notification">
           <div class="block-item__content">
@@ -187,12 +186,6 @@ export default {
     },
     // Push task data to tasks array
     onCreateTask: function () {
-      // function revisedRandId () {
-      //   return Math.random()
-      //     .toString(36)
-      //     .replace(/[^a-z]+/g, '')
-      //     .substr(2, 10)
-      // }
       const dateChoosed = new Date(this.today)
       dateChoosed.setHours(this.hoursChoosed)
       dateChoosed.setMinutes(this.minutesChoosed)
@@ -207,6 +200,7 @@ export default {
         type: this.typeSelected || 'default'
       }
       this.$store.dispatch('createTask', taskData)
+      this.$router.go(-1)
     },
     rightAction: function () {
       this.onCreateTask()
@@ -265,15 +259,15 @@ export default {
     oldNext.innerHTML = '<i class="fal fa-angle-right"> </i>'
     const oldPrev = document.querySelector('.prev-month')
     oldPrev.innerHTML = '<i class="fal fa-angle-left"> </i>'
-    this.$nextTick(() => {
-      const calendar = document.querySelector('.vue-calendar')
-      calendar.style.marginTop = '10px'
-      const days = document.querySelectorAll('.week-day')
-      for (let i = 0; i < days.length; i++) {
-        days[i].style.height = '30px'
-        days[i].style.width = '30px'
-      }
-    })
+    // this.$nextTick(() => {
+    //   const calendar = document.querySelector('.vue-calendar')
+    //   calendar.style.marginTop = '10px'
+    //   const days = document.querySelectorAll('.week-day')
+    //   for (let i = 0; i < days.length; i++) {
+    //     days[i].style.height = '30px'
+    //     days[i].style.width = '30px'
+    //   }
+    // })
   }
 }
 </script>
@@ -455,10 +449,10 @@ export default {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.week-day {
-  width: 30px;
-  height: 30px;
-}
+// .week-day {
+//   width: 30px;
+//   height: 30px;
+// }
 
 .calendar {
   transition: max-height 0.5s ease-in-out;

@@ -65,7 +65,8 @@ export default {
   color: white;
   display: flex;
   align-items: center;
-  background: url('assets/images/image.png') center no-repeat;
+  background: url('assets/images/image.png');
+  background-size: cover;
 }
 
 .container {
